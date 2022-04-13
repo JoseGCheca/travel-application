@@ -1,16 +1,17 @@
 import { Component, OnInit } from '@angular/core';
-import {ButtonModule} from 'primeng/button'
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss']
+  styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
+  constructor() {}
 
-  constructor() { }
+  ngOnInit(): void {}
 
-  ngOnInit(): void {
+  getInfo() {
+    window.location.href =
+      'https://www.github.com/josegcheca/travel-application/readme.md';
   }
-
 }

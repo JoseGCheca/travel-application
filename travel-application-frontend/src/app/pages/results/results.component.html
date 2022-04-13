@@ -1,0 +1,63 @@
+<p-table
+  *ngIf="itineraries$ | async as itineraries"
+  [value]="itineraries"
+  [paginator]="true"
+  [rows]="10"
+  [showCurrentPageReport]="true"
+  responsiveLayout="scroll"
+  currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+  [rowsPerPageOptions]="[10, 25, 50]"
+>
+  <ng-template pTemplate="header">
+    <tr>
+      <th>Departure Location</th>
+      <th>Arrival Location</th>
+      <th>Departure date</th>
+      <th>Arrival date</th>
+      <th>Airline</th>
+      <th>Price</th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-itinerary>
+    <tr>
+      <td>{{ itinerary.departureLocation }}</td>
+      <td>{{ itinerary.arrivalLocation }}</td>
+      <td>
+        {{
+          itinerary.departureDate.toLocaleString(undefined, {
+            year: 'numeric',
+            month: '2-digit',
+            day: '2-digit',
+            weekday: 'long',
+            hour: '2-digit',
+            hour12: false,
+            minute: '2-digit',
+            second: '2-digit'
+          })
+        }}
+      </td>
+      <td>
+        {{
+          itinerary.arrivalDate.toLocaleString(undefined, {
+            year: 'numeric',
+            month: '2-digit',
+            day: '2-digit',
+            weekday: 'long',
+            hour: '2-digit',
+            hour12: false,
+            minute: '2-digit',
+            second: '2-digit'
+          })
+        }}
+      </td>
+      <td>{{ itinerary.carrier }}</td>
+      <td>{{ itinerary.price }}</td>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="paginatorleft">
+    <p-button type="button" icon="pi pi-plus" styleClass="p-button-text"></p-button>
+  </ng-template>
+  <ng-template pTemplate="paginatorright">
+    <p-button type="button" icon="pi pi-cloud" styleClass="p-button-text"></p-button>
+  </ng-template>
+</p-table>

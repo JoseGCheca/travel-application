@@ -1,0 +1,45 @@
+<form [formGroup]="searchForm" (ngSubmit)="submit()">
+  <div
+    class="flex justify-content-center formgroup-inline align-items-center align-content-between"
+  >
+    <div class="p-field p-5">
+      <label for="departureCity" class="p-sr-only">Departure City</label>
+      <p-dropdown
+        id="departureCity"
+        *ngIf="locations$ | async as locations"
+        [options]="locations"
+        formControlName="departureCity"
+        placeholder="Select a City"
+        [showClear]="true"
+      ></p-dropdown>
+    </div>
+    <div class="p-field p-5">
+      <label for="arrivalCity" class="p-sr-only">Arrival City</label>
+      <p-dropdown
+        id="arrivalCity"
+        *ngIf="locations$ | async as locations"
+        formControlName="arrivalCity"
+        [options]="locations"
+        placeholder="Select a City"
+        [showClear]="true"
+      ></p-dropdown>
+    </div>
+    <div class="p-field p-5">
+      <label for="datepicker" class="p-sr-only">Date of departure</label>
+      <p-calendar
+        inputId="datepicker"
+        formControlName="datepicker"
+        [showTime]="true"
+        [showSeconds]="true"
+      ></p-calendar>
+    </div>
+    <p-button
+      pButton
+      type="submit"
+      class="p-button-raised p-button-rounded"
+      value="Submit"
+    >
+      Buscar vuelo
+    </p-button>
+  </div>
+</form>

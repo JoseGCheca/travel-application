@@ -1,0 +1,14 @@
+/* VARIABLES */
+@import 'variables/palette';
+
+body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  font-family: 'Rubik', Helvetica;
+}
+.p-toolbar,
+.p-button {
+  background-color: $primary-color !important;
+  border: transparent !important;
+}
